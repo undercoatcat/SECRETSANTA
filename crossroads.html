@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crossroads</title>
+    <link rel="stylesheet" href="admin.css"> 
+    <script src="admin.js" defer></script> 
+
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .crossroads-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .choice {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s ease-out;
+            user-select: none;
+
+            text-shadow: 0 0 6px rgba(0,255,100,0.6), 
+                         0 0 18px rgba(0,255,100,0.4);
+        }
+
+        .left {
+            background: rgba(0, 0, 0, 0.15);
+        }
+        .right {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .choice:hover {
+            background: rgba(0, 255, 100, 0.12);
+            text-shadow: 0 0 10px rgba(0,255,100,0.8),
+                         0 0 30px rgba(0,255,100,0.6),
+                         0 0 60px rgba(0,255,100,0.4);
+            transform: scale(1.03);
+        }
+        .divider {
+            width: 3px;
+            background: rgba(0, 255, 100, 0.25);
+            box-shadow: 0 0 8px rgba(0,255,100,0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="snow"></div>
+
+    <div class="crossroads-container">
+
+        <div class="choice left" onclick="location.href='the_end.html'">
+            ← LEFT
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="choice right" onclick="location.href='index.html'">
+            RIGHT →
+        </div>
+
+    </div>
+
+</body>
+</html>

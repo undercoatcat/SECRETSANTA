@@ -1,0 +1,180 @@
+
+body {
+    margin: 0;
+    background: #000;
+    color: #00ffbf;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+
+    text-shadow: 0 0 6px #00ffbf, 0 0 12px #00ffbf;
+    animation: flicker 0.12s infinite;
+
+    filter: url("#crt");
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    pointer-events: none;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 180, 0.25) 0px,
+        rgba(0, 255, 180, 0.25) 6px,
+        rgba(0, 255, 180, 0.05) 12px
+    );
+
+    mix-blend-mode: overlay;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 8;
+    pointer-events: none;
+
+    background: radial-gradient(circle,
+        rgba(0,0,0,0) 50%,
+        rgba(0,0,0,0.45) 100%
+    );
+}
+
+@keyframes flicker {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.92; }
+    100% { opacity: 1; }
+}
+
+
+.ascii-title {
+    font-size: 8px;
+    color: #0ff;
+    text-align: center;
+    margin-bottom: 20px;
+    white-space: pre;
+}
+
+.login-box {
+    background: rgba(0, 255, 200, 0.08);
+    border: 1px solid #00ffcc;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.login-box input {
+    width: 90%;
+    padding: 8px;
+    margin: 10px 0;
+    background: #111;
+    color: #0ff;
+    border: 1px solid #0ff;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 8px;
+    background: #0ff;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+#message {
+    color: #ff4444;
+    margin-top: 10px;
+}
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+
+    background: #020202;
+    border: 1px solid #00ffbf;
+    color: #00ffbf;
+
+    text-shadow: 0 0 4px #00ffbf;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid #00ffbf;
+    background: #000;
+    color: #00ffbf;
+    cursor: pointer;
+    margin-top: 10px;
+
+    box-shadow: 0 0 10px #00ffbf;
+}
+
+button:hover {
+    background: #00ffbf;
+    color: #000;
+}
+
+#snow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 12;
+}
+
+
+#lore {
+  position: fixed;
+  inset: 0;  
+  z-index: 9999;
+  background: transparent; 
+  display: none;    
+  justify-content: center; 
+  align-items: center;  
+  text-align: center;
+  padding: 20px; 
+}
+
+#lore::after {
+  content: "_";
+  animation: blink 0.8s infinite steps(1);
+  color: #0ff;
+  text-shadow: 0 0 6px #00ffbf;
+  margin-left: 6px;
+}
+
+.lore-wrapper {
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh; 
+  overflow: auto; 
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+#lore-output,
+.lore-text {
+  margin: 0;  
+  color: #0ff;
+  font-size: 28px;
+  line-height: 1.6;
+  white-space: pre-wrap;  
+  text-shadow: 0 0 6px #00ffbf, 0 0 12px #00ffbf;
+  text-align: center;
+  word-break: break-word;
+  padding: 8px 12px;
+}

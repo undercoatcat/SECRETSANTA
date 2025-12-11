@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The eternity and epilogue</title>
+
+<style>
+    * {
+        margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+        background: #000;
+        color: #ff3b3b;
+        font-family: "Courier New", monospace;
+        height: 100vh;
+        overflow: hidden;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-shadow: 0 0 8px #ff2a2a, 0 0 14px #ff1a1a;
+
+        animation: flicker 0.12s infinite alternate;
+        filter: url("#crt");
+        position: relative;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(255,0,0,0.15) 0,
+            rgba(255,0,0,0.15) 3px,
+            rgba(255,0,0,0.05) 6px
+        );
+        pointer-events: none;
+        z-index: 999;
+        mix-blend-mode: screen;
+    }
+
+    body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle,
+            rgba(0,0,0,0) 45%,
+            rgba(0,0,0,0.55) 100%);
+        pointer-events: none;
+        z-index: 998;
+    }
+
+    @keyframes flicker {
+        0% { opacity: 1; }
+        50% { opacity: 0.94; }
+        100% { opacity: 1; }
+    }
+
+    .ending-container {
+        width: 80%;
+        max-width: 900px;
+        text-align: center;
+        z-index: 5;
+    }
+
+    #ending-text {
+        font-size: 22px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        min-height: 200px;
+    }
+</style>
+
+<svg width="0" height="0">
+    <filter id="crt">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2"/>
+    </filter>
+</svg>
+
+</head>
+<body>
+
+<div class="ending-container">
+    <div id="ending-text"></div>
+</div>
+
+<script>
+const endingLore = 
+`You've reached the end of the scenarios.
+
+Few make it this far.
+Fewer still understand what waits here.
+
+But you... you kept going.
+
+Now listen carefully.
+
+Every path ends with a choice.
+Every choice ends with a price to pay.
+
+And now to my secret santa:
+
+1. Buy me a mid PC with a mid GPU
+   (yeah you probably aren't doing that)
+
+2. Draw me something cool and good related to my interests!
+   You can find them in the helping guide
+
+3. Anything creative, music, photography, anything!
+
+4. If you absolutely cannot do any of the above
+   just gift me whatever you would like :)`;
+
+const box = document.getElementById("ending-text");
+let i = 0;
+
+function typeEnding() {
+    if (i < endingLore.length) {
+        box.innerHTML += endingLore[i].replace(/\n/g, "<br>");
+        i++;
+        setTimeout(typeEnding, 32);
+    }
+}
+
+typeEnding();
+</script>
+
+</body>
+</html>
